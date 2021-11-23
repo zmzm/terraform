@@ -20,6 +20,11 @@ resource "aws_s3_bucket" "terraform_test_bucket" {
   }
 }
 
+# Creating new resource type - iam user
+resource "aws_iam_user" "terraform_test_iam_user" {
+  name = "terraform_test_iam_user_0129"
+}
+
 # After resource creation, you can output any valuable information into the console.
 output "terraform_test_bucket_remote_id" {
   value = aws_s3_bucket.terraform_test_bucket.id
