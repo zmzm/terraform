@@ -15,4 +15,7 @@ provider "aws" {
 # Creating first test resource (AWS S3 bucket)
 resource "aws_s3_bucket" "terraform_test_bucket" {
   bucket = "terraform-test-bucket-vladjik-0129"
+  versioning {
+    enabled = true
+  }
 }
