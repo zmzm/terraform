@@ -12,8 +12,14 @@ The terraform [plan](https://www.terraform.io/docs/cli/commands/plan.html) comma
 terraform plan
 ```
 
-The terraform [apply](https://www.terraform.io/docs/cli/commands/plan.html) command executes the actions proposed in a Terraform plan.
+The terraform [apply](https://www.terraform.io/docs/cli/commands/apply.html) command executes the actions proposed in a Terraform plan.
 
 ```text
 terraform apply
+```
+
+The terraform [destroy](https://www.terraform.io/docs/cli/commands/destroy.html) command is a convenient way to destroy all remote objects managed by a particular Terraform configuration.
+
+```text
+terraform destroy
 ```
