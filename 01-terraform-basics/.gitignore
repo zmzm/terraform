@@ -1,5 +1,5 @@
 .terraform
-.terraform*
-terraform.tfstate
-terraform.tfstate.backup
+*.tfstate
+*tfstate.backup
+*lock.hcl
 .DS_Store
