@@ -1,5 +1,5 @@
 variable "names" {
-  type        = list(string)
-  default     = ["John", "James", "Jack"]
+  type        = set(string)
+  default     = ["Jane", "John", "James", "Jack"]
   description = "User names list"
 }
