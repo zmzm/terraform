@@ -1,9 +1,9 @@
 variable "users_map" {
   type = map(any)
   default = {
-    john : "USA",
-    james : "Canada",
-    jack : "Germany"
+    john : { country : "USA", department : "CCD" },
+    james : { country : "Canada", department : "NDB" },
+    jack : { country : "Germany", department : "PRM" }
   }
-  description = "User map"
+  description = "Users map"
 }
