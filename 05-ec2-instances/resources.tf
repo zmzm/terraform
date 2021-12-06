@@ -1,4 +1,5 @@
 resource "aws_security_group" "http_server_sg" {
+  # name, vpc_id  is very importants because it's forces new resource creation
   name        = "http_server_sg"
   description = "Allow HTTP/SSH inbound/outbound traffic"
   vpc_id      = "vpc-0dd32c134eec70aa4"
@@ -31,4 +32,13 @@ resource "aws_security_group" "http_server_sg" {
   tags = {
     "name" = "http_server_sg "
   }
+}
+
+resource "aws_instance" "http_server" {
+  ami             = "ami-0ed9277fb7eb570c9"
+  instance_type   = "t2.micro"
+  key_name        = "default_ec2"
+  security_groups = [aws_security_group.http_server_sg.id]
+  subnet_id       = "subnet-082bb22982366b048"
+
 }
