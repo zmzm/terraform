@@ -1,8 +1,13 @@
+# Default resources
+resource "aws_default_vpc" "default" {
+
+}
+
 resource "aws_security_group" "http_server_sg" {
   # name, vpc_id  is very importants because it's forces new resource creation
   name        = "http_server_sg"
   description = "Allow HTTP/SSH inbound/outbound traffic"
-  vpc_id      = "vpc-0dd32c134eec70aa4"
+  vpc_id      = aws_default_vpc.default.id
 
   # HTTP traffic
   ingress {
