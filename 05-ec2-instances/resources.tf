@@ -41,4 +41,20 @@ resource "aws_instance" "http_server" {
   security_groups = [aws_security_group.http_server_sg.id]
   subnet_id       = "subnet-082bb22982366b048"
 
+  // Custom provisioner need connection
+  connection {
+    type        = "ssh"
+    host        = self.public_ip
+    user        = "ec2-user"
+    private_key = file(var.aws_key_pair)
+  }
+
+  // NOTE provisioners should only be used as a last resort
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum install httpd -y", // install apache HTTP server (httpd)
+      "sudo service httpd start",
+      "echo Virtual server is working at ${self.public_dns} | sudo tee /var/www/html/index.html" // create file index.html and add message 
+    ]
+  }
 }
