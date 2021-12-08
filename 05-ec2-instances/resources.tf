@@ -44,7 +44,7 @@ resource "aws_instance" "http_server" {
   instance_type   = "t2.micro"
   key_name        = "default_ec2"
   security_groups = [aws_security_group.http_server_sg.id]
-  subnet_id       = "subnet-082bb22982366b048"
+  subnet_id       = tolist(data.aws_subnet_ids.default_subnets.ids)[2]
 
   // Custom provisioner need connection
   connection {
