@@ -1,6 +1,6 @@
 # S3 bucket storage for projects terraform state
 resource "aws_s3_bucket" "backend_state" {
-  bucket = "dev-applications-backend-state-vladjik-0129"
+  bucket = var.aws_S3_backed_state_bucket_name
 
   versioning {
     enabled = true
@@ -22,14 +22,12 @@ resource "aws_s3_bucket" "backend_state" {
 }
 
 resource "aws_dynamodb_table" "backend_lock" {
-  name           = "dev_applications_backend_lock"
-  billing_mode   = "PROVISIONED"
-  read_capacity  = 20
-  write_capacity = 20
+  name         = var.aws_backend_state_lock_db_name
+  billing_mode = "PAY_PER_REQUEST"
 
-  hash_key = "LockId"
+  hash_key = "LockID"
   attribute {
-    name = "LockId"
+    name = "LockID"
     type = "S"
   }
 }
