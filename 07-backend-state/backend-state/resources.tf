@@ -20,3 +20,16 @@ resource "aws_s3_bucket" "backend_state" {
     }
   }
 }
+
+resource "aws_dynamodb_table" "backend_lock" {
+  name           = "dev_applications_backend_lock"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 20
+  write_capacity = 20
+
+  hash_key = "LockId"
+  attribute {
+    name = "LockId"
+    type = "S"
+  }
+}
